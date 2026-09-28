@@ -1,0 +1,59 @@
+{
+  "name": "aerolink-control-station",
+  "version": "0.1.0",
+  "author": "AeroLink",
+  "private": true,
+  "description": "Integrated MAVLink flight control and HIL desktop station",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "node node_modules/vite/bin/vite.js",
+    "build": "node node_modules/typescript/lib/tsc.js -b && node node_modules/vite/bin/vite.js build",
+    "test": "node --test tests/*.test.cjs",
+    "analyze:log": "python tools/log_analysis/quick_analyze_latest.py --device",
+    "test:soak": "node scripts/hil-soak.cjs --minutes=30",
+    "test:firmware-pressure": "node scripts/firmware-pressure.cjs",
+    "preview": "node node_modules/vite/bin/vite.js preview",
+    "desktop": "node node_modules/concurrently/dist/bin/concurrently.js -k \"node node_modules/vite/bin/vite.js\" \"node node_modules/wait-on/bin/wait-on http://localhost:5173 && node node_modules/electron/cli.js .\"",
+    "desktop:build": "npm run build && electron-builder --dir",
+    "desktop:installer": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "jspack": "^0.0.4",
+    "lucide-react": "0.468.0",
+    "maplibre-gl": "6.11.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "recharts": "2.15.0",
+    "serialport": "^12.0.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "@types/three": "^0.185.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "concurrently": "9.1.2",
+    "electron": "34.0.0",
+    "electron-builder": "25.1.8",
+    "node-mavlink": "^2.3.0",
+    "typescript": "5.7.2",
+    "vite": "6.0.7",
+    "wait-on": "8.0.1"
+  },
+  "build": {
+    "appId": "cn.aerolink.station",
+    "productName": "AeroLink Control Station",
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    }
+  }
+}

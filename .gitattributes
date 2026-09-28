@@ -1,0 +1,5 @@
+# MAVLink 协议代码由脚本根据 XML 定义生成，不参与人工源码统计和空白检查。
+src/protocol/generated/** linguist-generated=true -whitespace
+electron/mavlink/generated.js linguist-generated=true -whitespace
+electron/mavlink/generated.tests.js linguist-generated=true -whitespace
+protocol_definitions/** linguist-generated=true -whitespace

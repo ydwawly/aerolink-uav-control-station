@@ -1,0 +1,7 @@
+name: hil_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - nodejs>=20
+  - pip

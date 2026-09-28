@@ -1,0 +1,13 @@
+export type PageKey = 'monitor' | 'parameters' | 'charts' | 'logs' | 'hil' | 'replay' | 'devices';
+export type AppMode = 'MONITOR' | 'HIL' | 'REPLAY';
+export interface SourceStats {systemId:number;componentId:number;rxPackets:number;lostPackets:number;lossRate:number;lastRxAt:number;messageRates:Record<string,number>}
+export interface LinkStats { connected:boolean; path:string; rxBytes:number; txBytes:number; rxPackets:number; lostPackets:number; lossRate:number; lastHeartbeat:number; messageRates:Record<string,number>;sources?:SourceStats[];txQueueBytes?:number;droppedTx?:number;timeOffsetUs?:number;timeRttUs?:number; }
+export interface Telemetry { roll:number; pitch:number; yaw:number; altitude:number; speed:number; voltage:number; current:number; battery:number; latency:number; cpu:number; motors:number[]; simTime:number; gpsFix?:number; satellites?:number; lat?:number; lon?:number; quaternion?:number[];position?:number[];velocity?:number[];attitudeValid?:boolean;positionValid?:boolean;armed?:boolean;baseMode?:number;hilEnabled?:boolean; mode?:number; ekfFlags?:number; imu?:{xacc:number;yacc:number;zacc:number;xgyro:number;ygyro:number;zgyro:number}; link?:LinkStats; }
+export type HilMode='preview'|'estimator'|'closed-loop';
+export type HilTrajectory='static'|'roll'|'pitch'|'yaw'|'combined'|'figure8';
+export interface HilRuntimeStatus {phase:'idle'|'starting'|'running'|'paused'|'stopping'|'fault';mode:HilMode|null;reason:string;startedAt:number}
+export interface HilState {running:boolean;mode:HilMode;simTime:number;position:number[];velocity:number[];quaternion:number[];roll:number;pitch:number;yaw:number;altitude:number;speed:number;motors:number[];controls:number[];onGround:boolean;timing:{maxJitterMs:number;p95JitterMs:number;overruns:number;droppedSteps:number};link?:{txQueueBytes:number;droppedTx:number};config:{previewOnly:boolean;estimatorOnly?:boolean;trajectory?:HilTrajectory;originAltMsl:number;wind:number[];motorEfficiency:number[];dropoutRate:number;sensorDelayMs:number}}
+export interface ChartPoint { t:number; x:number; y:number; z:number; roll:number; pitch:number; yaw:number; truthRoll?:number;truthPitch?:number;truthYaw?:number;rollError?:number;pitchError?:number;yawError?:number;attitudeError?:number;positionError?:number;m1:number; m2:number; m3:number; m4:number; altitude:number;truthAltitude?:number;voltage:number; speed:number; }
+export interface PortDescriptor {path:string;manufacturer:string;serialNumber:string;vendorId:string;productId:string;friendlyName:string}
+export interface VehicleParameter {id:string;value:number;type:number;index:number;count:number;componentId:number}
+export interface VehicleLog {id:number;numLogs:number;lastLogNum:number;timeUtc:number;size:number}
