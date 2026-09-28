@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D6)
-![Electron](https://img.shields.io/badge/Electron-34-47848F)
+![Electron](https://img.shields.io/badge/Electron-44-47848F)
 ![MAVLink](https://img.shields.io/badge/MAVLink-2.0-blue)
 ![Tests](https://img.shields.io/badge/tests-32%2F32-brightgreen)
 
@@ -86,7 +86,7 @@ sequenceDiagram
 
 ## 快速开始
 
-需要 Node.js 20+，推荐 Windows 10/11。系统使用 `usbser.sys` 识别标准 USB CDC ACM，不需要自研内核驱动。
+需要 Node.js 22.12+，推荐 Windows 10/11。系统使用 `usbser.sys` 识别标准 USB CDC ACM，不需要自研内核驱动。
 
 ```powershell
 git clone https://github.com/ydwawly/aerolink-uav-control-station.git
@@ -123,7 +123,7 @@ npm run desktop:installer
 |---|---:|
 | Node 行为测试 | 32/32 通过 |
 | TypeScript + Vite 生产构建 | 通过 |
-| 生产依赖审计 | 0 个已知漏洞 |
+| 完整 npm 依赖审计 | 0 个已知漏洞 |
 | Python 生成包 → Node 解包互操作 | 通过 |
 | Electron 原生 A/B 实板升级 | 通过 |
 | A/B 连续往返 | 24/24 通过 |

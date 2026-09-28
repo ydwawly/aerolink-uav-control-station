@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "author": "AeroLink",
   "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "description": "Integrated MAVLink flight control and HIL desktop station",
   "main": "electron/main.cjs",
   "scripts": {
+    "postinstall": "node node_modules/electron/install.js",
     "dev": "node node_modules/vite/bin/vite.js",
     "build": "node node_modules/typescript/lib/tsc.js -b && node node_modules/vite/bin/vite.js build",
     "test": "node --test tests/*.test.cjs",
@@ -33,11 +37,11 @@
     "@types/three": "^0.185.1",
     "@vitejs/plugin-react": "4.3.4",
     "concurrently": "9.1.2",
-    "electron": "34.0.0",
-    "electron-builder": "25.1.8",
-    "node-mavlink": "^2.3.0",
+    "electron": "44.4.5",
+    "electron-builder": "26.15.3",
+    "node-mavlink": "2.0.3",
     "typescript": "5.7.2",
-    "vite": "6.0.7",
+    "vite": "6.4.3",
     "wait-on": "8.0.1"
   },
   "build": {
